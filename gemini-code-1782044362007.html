@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Player with View Counter</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            padding: 25px;
+            max-width: 800px;
+            width: 90%;
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* อัตราส่วน 16:9 */
+            height: 0;
+            overflow: hidden;
+            border-radius: 8px;
+            background-color: #000;
+        }
+        .video-wrapper video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .info-panel {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid #eee;
+            padding-top: 15px;
+        }
+        .view-count {
+            font-size: 1.1rem;
+            color: #666;
+            font-weight: bold;
+        }
+        .view-count span {
+            color: #e74c3c;
+            font-size: 1.3rem;
+        }
+        .btn-reset {
+            background-color: #7f8c8d;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .btn-reset:hover {
+            background-color: #95a5a6;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>วิดีโอแนะนำทรัพย์สังคีต</h1>
+    
+    <div class="video-wrapper">
+        <!-- เปลี่ยนชื่อไฟล์วิดีโอของคุณตรง src ด้านล่างนี้ -->
+        <video id="myVideo" controls>
+            <source src="your-video-file.mp4" type="video/mp4">
+            เบราว์เซอร์ของคุณไม่รองรับการเล่นวิดีโอนี้
+        </video>
+    </div>
+
+    <div class="info-panel">
+        <div class="view-count">
+            ยอดผู้เข้าชม: <span id="viewCount">0</span> ครั้ง
+        </div>
+        <button class="btn-reset" onclick="resetViews()">รีเซ็ตยอดวิว</button>
+    </div>
+</div>
+
+<script>
+    // ฟังก์ชันนับและแสดงยอดวิว
+    function updateViews() {
+        // ตรวจสอบว่าเคยมีการบันทึกยอดวิวไว้ใน localStorage หรือไม่
+        let currentViews = localStorage.getItem('videoViews');
+        
+        if (currentViews === null) {
+            // ถ้ายังไม่เคยมี ให้เริ่มนับที่ 1
+            currentViews = 1;
+        } else {
+            // ถ้ามีอยู่แล้ว ให้เพิ่มค่าขึ้น 1
+            currentViews = parseInt(currentViews) + 1;
+        }
+        
+        // บันทึกค่าใหม่กลับลงไปใน localStorage
+        localStorage.setItem('videoViews', currentViews);
+        
+        // แสดงผลบนหน้าเว็บ
+        document.getElementById('viewCount').innerText = currentViews.toLocaleString();
+    }
+
+    // ฟังก์ชันสำหรับรีเซ็ตยอดวิวกลับเป็น 0
+    function resetViews() {
+        localStorage.setItem('videoViews', 0);
+        document.getElementById('viewCount').innerText = 0;
+    }
+
+    // เรียกใช้งานฟังก์ชันนับยอดวิวทันทีที่โหลดหน้าเว็บเสร็จ
+    window.onload = updateViews;
+</script>
+
+</body>
+</html>
