@@ -75,38 +75,25 @@
         .info-panel {
             margin-top: 25px;
             display: flex;
-            justify-content: space-between;
+            justify-content: center; /* ปรับให้อยู่ตรงกลางอย่างสวยงามเมื่อไม่มีปุ่ม */
             align-items: center;
             border-top: 2px dashed #d4af37; /* เส้นประสีทอง */
             padding-top: 20px;
         }
         .view-count {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             color: #f4ebd0;
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            background-color: rgba(0, 0, 0, 0.2);
+            padding: 10px 25px;
+            border-radius: 30px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
         }
         .view-count span {
             color: #d4af37; /* ยอดวิวสีทองเด่น */
-            font-size: 1.5rem;
+            font-size: 1.7rem;
             font-weight: bold;
-            margin: 0 5px;
-        }
-        .btn-reset {
-            background-color: #4a3525; /* ปุ่มสีน้ำตาล */
-            color: #d4af37; /* ตัวอักษรสีทอง */
-            border: 1px solid #d4af37;
-            padding: 8px 18px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-        }
-        .btn-reset:hover {
-            background-color: #d4af37; /* เปลี่ยนเป็นสีทองตอนเอาเมาส์ชี้ */
-            color: #1a3c20; /* ตัวอักษรเปลี่ยนเป็นสีเขียว */
-            font-weight: bold;
-            box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+            margin: 0 8px;
         }
     </style>
 </head>
@@ -115,44 +102,4 @@
 <div class="container">
     <h1>✨ วิดีโอแนะนำทรัพย์สังคีตดนตรีไทยเครื่อง ดีด ✨</h1>
     
-    <div class="video-wrapper">
-        <video id="myVideo" controls preload="auto">
-            <source src="https://cdn.jsdelivr.net/gh/poramet3844-ship-it/-5.1@main/video1.mp4" type="video/mp4">
-            เบราว์เซอร์ของคุณไม่รองรับการเล่นวิดีโอนี้
-        </video>
-    </div>
-
-    <div class="info-panel">
-        <div class="view-count">
-            ยอดผู้เข้าชม: <span id="viewCount">0</span> ครั้ง
-        </div>
-        <button class="btn-reset" onclick="resetViews()">🔄 รีเซ็ตยอดวิว</button>
-    </div>
-</div>
-
-<script>
-    function updateViews() {
-        let currentViews = localStorage.getItem('videoViews');
-        
-        if (currentViews === null) {
-            currentViews = 1;
-        } else {
-            currentViews = parseInt(currentViews) + 1;
-        }
-        
-        localStorage.setItem('videoViews', currentViews);
-        document.getElementById('viewCount').innerText = currentViews.toLocaleString();
-    }
-
-    function resetViews() {
-        if(confirm("คุณต้องการรีเซ็ตยอดผู้เข้าชมใช่หรือไม่?")) {
-            localStorage.setItem('videoViews', 0);
-            document.getElementById('viewCount').innerText = 0;
-        }
-    }
-
-    window.onload = updateViews;
-</script>
-
-</body>
-</html>
+    <div class="video
