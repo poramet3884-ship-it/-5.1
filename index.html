@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>วิดีโอแนะนำศัพสังคีตดนตรีไทยเครื่อง ดีด</title>
+    <title>วิดีโอแนะนำศัพท์สังคีตดนตรีไทยเครื่อง ดีด</title>
     <style>
         body {
             font-family: 'Sarabun', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -75,7 +75,7 @@
         .info-panel {
             margin-top: 25px;
             display: flex;
-            justify-content: space-between; /* จัดให้ยอดวิวอยู่ซ้าย ปุ่มรีเซ็ตอยู่ขวา */
+            justify-content: space-between;
             align-items: center;
             border-top: 2px dashed #d4af37; /* เส้นประสีทอง */
             padding-top: 20px;
@@ -117,7 +117,7 @@
 <body>
 
 <div class="container">
-    <h1>✨ วิดีโอแนะนำทรัพย์สังคีตดนตรีไทยเครื่อง ดีด ✨</h1>
+    <h1>✨ วิดีโอแนะนำศัพท์สังคีตดนตรีไทยเครื่อง ดีด ✨</h1>
     
     <div class="video-wrapper">
         <video id="myVideo" controls preload="auto">
@@ -135,7 +135,6 @@
 </div>
 
 <script>
-    // ฟังก์ชันนับและแสดงยอดวิวสะสม
     function updateViews() {
         let currentViews = localStorage.getItem('thaiVideoViews_secure');
         
@@ -149,23 +148,18 @@
         document.getElementById('viewCount').innerText = currentViews.toLocaleString();
     }
 
-    // ฟังก์ชันสำหรับรีเซ็ตยอดวิวที่ต้องกรอกรหัสผ่าน
     function resetViewsWithPassword() {
-        // แอบถามรหัสผ่านผ่านกล่องข้อความ Prompt
         let passwordInput = prompt("กรุณาใส่รหัสผ่านเพื่อรีเซ็ตยอดผู้เข้าชม:");
         
-        // ตรวจสอบรหัสผ่านที่ตั้งไว้คือ 1423po
         if (passwordInput === "1423po") {
             localStorage.setItem('thaiVideoViews_secure', 0);
             document.getElementById('viewCount').innerText = 0;
             alert("รีเซ็ตยอดผู้เข้าชมเรียบร้อยแล้วเป็น 0 ครั้ง");
         } else if (passwordInput !== null) {
-            // ถ้ากรอกรหัสผิดและไม่ได้กดยกเลิก
             alert("รหัสผ่านไม่ถูกต้อง! ไม่สามารถรีเซ็ตข้อมูลได้");
         }
     }
 
-    // เรียกใช้งานเมื่อโหลดหน้าเว็บสำเร็จ
     window.onload = updateViews;
 </script>
 
