@@ -75,7 +75,7 @@
         .info-panel {
             margin-top: 25px;
             display: flex;
-            justify-content: center; /* ปรับให้อยู่ตรงกลางอย่างสวยงามเมื่อไม่มีปุ่ม */
+            justify-content: center;
             align-items: center;
             border-top: 2px dashed #d4af37; /* เส้นประสีทอง */
             padding-top: 20px;
@@ -102,4 +102,36 @@
 <div class="container">
     <h1>✨ วิดีโอแนะนำทรัพย์สังคีตดนตรีไทยเครื่อง ดีด ✨</h1>
     
-    <div class="video
+    <div class="video-wrapper">
+        <video id="myVideo" controls preload="auto">
+            <source src="video1.mp4" type="video/mp4">
+            เบราว์เซอร์ของคุณไม่รองรับการเล่นวิดีโอนี้
+        </video>
+    </div>
+
+    <div class="info-panel">
+        <div class="view-count">
+            👁️ ยอดผู้เข้าชมสะสม: <span id="viewCount">0</span> ครั้ง
+        </div>
+    </div>
+</div>
+
+<script>
+    function updateViews() {
+        let currentViews = localStorage.getItem('thaiVideoViews_secure');
+        
+        if (currentViews === null) {
+            currentViews = 1;
+        } else {
+            currentViews = parseInt(currentViews) + 1;
+        }
+        
+        localStorage.setItem('thaiVideoViews_secure', currentViews);
+        document.getElementById('viewCount').innerText = currentViews.toLocaleString();
+    }
+
+    window.onload = updateViews;
+</script>
+
+</body>
+</html>
