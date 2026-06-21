@@ -116,8 +116,8 @@
     <h1>✨ วิดีโอแนะนำทรัพย์สังคีตดนตรีไทยเครื่อง ดีด ✨</h1>
     
     <div class="video-wrapper">
-        <video id="myVideo" controls>
-            <source src="https://raw.githubusercontent.com/poramet3844-ship-it/-5.1/main/video1.mp4" type="video/mp4">
+        <video id="myVideo" controls preload="auto">
+            <source src="https://cdn.jsdelivr.net/gh/poramet3844-ship-it/-5.1@main/video1.mp4" type="video/mp4">
             เบราว์เซอร์ของคุณไม่รองรับการเล่นวิดีโอนี้
         </video>
     </div>
@@ -131,7 +131,6 @@
 </div>
 
 <script>
-    // ฟังก์ชันนับและแสดงยอดวิว
     function updateViews() {
         let currentViews = localStorage.getItem('videoViews');
         
@@ -145,7 +144,6 @@
         document.getElementById('viewCount').innerText = currentViews.toLocaleString();
     }
 
-    // ฟังก์ชันสำหรับรีเซ็ตยอดวิว
     function resetViews() {
         if(confirm("คุณต้องการรีเซ็ตยอดผู้เข้าชมใช่หรือไม่?")) {
             localStorage.setItem('videoViews', 0);
@@ -153,7 +151,6 @@
         }
     }
 
-    // เรียกใช้งานเมื่อโหลดหน้าเว็บสำเร็จ
     window.onload = updateViews;
 </script>
 
