@@ -80,9 +80,8 @@
     <h1>วิดีโอแนะนำทรัพย์สังคีต</h1>
     
     <div class="video-wrapper">
-        <!-- เปลี่ยนชื่อไฟล์วิดีโอของคุณตรง src ด้านล่างนี้ -->
         <video id="myVideo" controls>
-            <source src="your-video-file.mp4" type="video/mp4">
+            <source src="video1.mp4" type="video/mp4">
             เบราว์เซอร์ของคุณไม่รองรับการเล่นวิดีโอนี้
         </video>
     </div>
@@ -98,31 +97,25 @@
 <script>
     // ฟังก์ชันนับและแสดงยอดวิว
     function updateViews() {
-        // ตรวจสอบว่าเคยมีการบันทึกยอดวิวไว้ใน localStorage หรือไม่
         let currentViews = localStorage.getItem('videoViews');
         
         if (currentViews === null) {
-            // ถ้ายังไม่เคยมี ให้เริ่มนับที่ 1
             currentViews = 1;
         } else {
-            // ถ้ามีอยู่แล้ว ให้เพิ่มค่าขึ้น 1
             currentViews = parseInt(currentViews) + 1;
         }
         
-        // บันทึกค่าใหม่กลับลงไปใน localStorage
         localStorage.setItem('videoViews', currentViews);
-        
-        // แสดงผลบนหน้าเว็บ
         document.getElementById('viewCount').innerText = currentViews.toLocaleString();
     }
 
-    // ฟังก์ชันสำหรับรีเซ็ตยอดวิวกลับเป็น 0
+    // ฟังก์ชันสำหรับรีเซ็ตยอดวิว
     function resetViews() {
         localStorage.setItem('videoViews', 0);
         document.getElementById('viewCount').innerText = 0;
     }
 
-    // เรียกใช้งานฟังก์ชันนับยอดวิวทันทีที่โหลดหน้าเว็บเสร็จ
+    // เรียกใช้งานเมื่อโหลดหน้าเว็บสำเร็จ
     window.onload = updateViews;
 </script>
 
